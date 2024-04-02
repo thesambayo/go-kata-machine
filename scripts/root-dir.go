@@ -13,8 +13,8 @@ type Algo struct {
 
 func GetDSA() []string {
 	return []string{
-		//"LinearSearchList",
-		//"BinarySearchList",
+		"LinearSearchList",
+		"BinarySearchList",
 		"TwoCrystalBalls",
 		"BubbleSort",
 		"Stack",

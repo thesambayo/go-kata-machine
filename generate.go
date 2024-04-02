@@ -94,7 +94,7 @@ func main() {
 		}
 
 		if err != nil {
-			fmt.Println("error creating dsa file", err)
+			fmt.Println(err)
 			continue
 		}
 	}

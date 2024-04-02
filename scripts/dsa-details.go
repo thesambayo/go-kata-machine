@@ -14,18 +14,20 @@ type DSADetails struct {
 	Methods     []DsaMethod
 }
 
+// TODO: tests for LinearSearchList and BinarySearchList, not ready
+
 func GetDsaDetails() map[string]DSADetails {
 	return map[string]DSADetails{
-		//"LinearSearchList": {
-		//	DsaType:     "fn",
-		//	ArgsTypes:   "haystack []int, needle int",
-		//	ReturnsType: "bool",
-		//},
-		//"BinarySearchList": {
-		//	DsaType:     "fn",
-		//	ArgsTypes:   "haystack []int, needle int",
-		//	ReturnsType: "bool",
-		//},
+		"LinearSearchList": {
+			DsaType:     "fn",
+			ArgsTypes:   "haystack []int, needle int",
+			ReturnsType: "bool",
+		},
+		"BinarySearchList": {
+			DsaType:     "fn",
+			ArgsTypes:   "haystack []int, needle int",
+			ReturnsType: "bool",
+		},
 		"TwoCrystalBalls": {
 			DsaType:     "fn",
 			ArgsTypes:   "haystack []bool",
