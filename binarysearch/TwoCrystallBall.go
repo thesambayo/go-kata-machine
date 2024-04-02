@@ -3,12 +3,7 @@ package binarysearch
 import (
 	"fmt"
 	"math"
-	"math/rand"
 )
-
-func GenerateRandomNumber(minBound, maxBound int) int {
-	return rand.Intn(maxBound-minBound) + minBound
-}
 
 func LinearSearch(haystack []bool) {
 	for i, value := range haystack {
