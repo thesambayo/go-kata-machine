@@ -29,6 +29,6 @@ func TestStack(t *testing.T) {
 func assertError(t testing.TB, got int, expected int) {
 	t.Helper()
 	if got != expected {
-		t.Errorf("slice not sorted. got %d, want %d", got, expected)
+		t.Errorf("stack not correct. got %d, want %d", got, expected)
 	}
 }

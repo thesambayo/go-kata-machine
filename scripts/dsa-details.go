@@ -1,16 +1,17 @@
 package scripts
 
-//type DsaMethods struct {
-//	name        string
-//	argsTypes   string
-//	returnTypes string
-//}
+type DsaMethod struct {
+	Name        string
+	ArgsTypes   string
+	ReturnTypes string
+}
 
 type DSADetails struct {
 	DsaType     string
 	ArgsTypes   string
 	ReturnsType string
-	//method      DsaMethods
+	Generic     string
+	Methods     []DsaMethod
 }
 
 func GetDsaDetails() map[string]DSADetails {
@@ -34,6 +35,48 @@ func GetDsaDetails() map[string]DSADetails {
 			DsaType:     "fn",
 			ArgsTypes:   "arr []int",
 			ReturnsType: "[]int",
+		},
+		"Stack": {
+			DsaType: "struct",
+			Generic: "T",
+			Methods: []DsaMethod{
+				{
+					Name:        "Push",
+					ArgsTypes:   "item T",
+					ReturnTypes: "",
+				},
+				{
+					Name:        "Pop",
+					ArgsTypes:   "",
+					ReturnTypes: "T",
+				},
+				{
+					Name:        "Peek",
+					ArgsTypes:   "",
+					ReturnTypes: "T",
+				},
+			},
+		},
+		"Queue": {
+			DsaType: "struct",
+			Generic: "T",
+			Methods: []DsaMethod{
+				{
+					Name:        "Enqueue",
+					ArgsTypes:   "item T",
+					ReturnTypes: "",
+				},
+				{
+					Name:        "Deque",
+					ArgsTypes:   "",
+					ReturnTypes: "T",
+				},
+				{
+					Name:        "Peek",
+					ArgsTypes:   "",
+					ReturnTypes: "T",
+				},
+			},
 		},
 	}
 }

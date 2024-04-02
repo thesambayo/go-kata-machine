@@ -5,6 +5,7 @@ type Node[T any] struct {
 	// pointer-value of nextNode, zerothValue is nil
 	prev *Node[T]
 }
+
 type Stack[T any] struct {
 	Length int
 	// reference to pointer-value of headNode, zerothValue is nil

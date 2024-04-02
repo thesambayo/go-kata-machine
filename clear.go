@@ -8,7 +8,6 @@ import (
 )
 
 func main() {
-
 	rootDir, err := scripts.GetRootDir()
 	if err != nil {
 		log.Fatal(err)
