@@ -3,11 +3,24 @@
 ### WARNING
 I have just started to add algorithms, as I have not completed the course.
 
-### Supported Data Structures
-* Bubble sort
-* Binary search
-* Queue
-* Stack
+### How to get started 
+Clone the repo, of course, you should have golang installed on your computer.
 
-### Coming
-A way to generate new directory to write all tests
+Create a day of katas, this will use the files in `scripts/*`.
+You can check the `scripts/dsa-details.go` file to see list of ready algorithms that will have its respective bare files and tests generated.
+
+```go
+go run generate.go
+```
+
+This will progressively create folders named
+```shell
+day1/*
+day2/*
+day3/*
+day4/*
+```
+### To clear all generated days of katas, run:
+```go
+go run clear.go
+```
