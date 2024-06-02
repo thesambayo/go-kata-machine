@@ -74,17 +74,12 @@ func main() {
 		log.Fatal(err)
 	}
 
-	for _, dsa := range scripts.GetDSA() {
-		// create algo kata directory
+	for dsa, dsaConfig := range scripts.GetDsaDetails() {
+		// create algo kata directory e.g .day1/Stack/, .day1/Queue/
 		dsaDirPath := path.Join(dayDirPath, strings.ToLower(dsa))
 		err = os.Mkdir(dsaDirPath, DirectoryPermission)
 
-		dsaConfig, ok := scripts.GetDsaDetails()[dsa]
-		if !ok {
-			fmt.Printf("%s config not found", dsa)
-			continue
-		}
-
+		// DsaType: either fn or struct atm
 		switch dsaConfig.DsaType {
 		case "struct":
 			err = createStruct(dsa, dsaDirPath, dsaConfig)
@@ -97,8 +92,13 @@ func main() {
 			fmt.Println(err)
 			continue
 		}
-	}
 
+		err = createDsaTest(dsa, dsaDirPath, rootDir)
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
+	}
 }
 
 func createFunction(dsa, dsaDirPath string, dsaConfig scripts.DSADetails) error {
@@ -111,13 +111,6 @@ func %s(%s) %s {}
 	if err != nil {
 		return err
 	}
-
-	// create test file and content
-	err = createDsaTest(dsa, dsaDirPath, err)
-	if err != nil {
-		return err
-	}
-
 	return nil
 }
 
@@ -170,24 +163,18 @@ type Methods[%s any] interface {
 	if err != nil {
 		return err
 	}
-
-	// create test file and content
-	err = createDsaTest(dsa, dsaDirPath, err)
-	if err != nil {
-		return err
-	}
-
 	return nil
-
 }
 
-func createDsaTest(dsa string, dsaDirPath string, err error) error {
-	dsaTest, ok := scripts.GetDsaTests()[dsa]
-	if !ok {
+func createDsaTest(dsa, dsaDirPath, rootDir string) error {
+	testTxtPath := rootDir + "/test-txts/" + dsa + ".txt"
+	dsaTest, err := os.ReadFile(testTxtPath)
+	if err != nil {
 		errInfo := fmt.Sprintf("%s test not found", dsa)
 		return errors.New(errInfo)
+		// panic(err)
 	}
-	err = os.WriteFile(dsaDirPath+"/"+dsa+"_test.go", []byte(dsaTest), FilePermission)
+	err = os.WriteFile(dsaDirPath+"/"+dsa+"_test.go", dsaTest, FilePermission)
 	if err != nil {
 		return err
 	}

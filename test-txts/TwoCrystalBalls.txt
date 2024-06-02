@@ -1,4 +1,4 @@
-package binarysearch
+package twocrystalballs
 
 import (
 	"math/rand"
@@ -9,7 +9,7 @@ func GenerateRandomNumber(minBound, maxBound int) int {
 	return rand.Intn(maxBound-minBound) + minBound
 }
 
-func TestTwoCrystalBall(t *testing.T) {
+func TestTwoCrystalBalls(t *testing.T) {
 	t.Run("two crystal balls where there is a break", func(t *testing.T) {
 		numOfFlights := 10000
 		idx := GenerateRandomNumber(1, numOfFlights)

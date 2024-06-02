@@ -1,10 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"go-kata-machine/stack"
-)
-
 func main() {
 	//foo := []int{1, 3, 4, 69, 71, 81, 90, 99, 420, 1337, 69420}
 	//fmt.Println(binarysearch.BinarySearch(foo, 99))
@@ -50,15 +45,15 @@ func main() {
 	//fmt.Println(testQueue.Peek()) // 69
 	//fmt.Println(testQueue.Length) // 1
 
-	stackList := stack.Stack[int]{}
-	fmt.Println(stackList)
-	stackList.Push(5)
-	fmt.Println(stackList, "head is not nil")
-	stackList.Push(7)
-	fmt.Println(stackList.Length) //2
-	fmt.Println(stackList.Pop())  // 7
-	fmt.Println(stackList, "head and tail pointers are same again")
-	fmt.Println(stackList.Pop()) // 5
-
-	fmt.Println(stackList.Length) //0
+	//stackList := stack.Stack[int]{}
+	//fmt.Println(stackList)
+	//stackList.Push(5)
+	//fmt.Println(stackList, "head is not nil")
+	//stackList.Push(7)
+	//fmt.Println(stackList.Length) //2
+	//fmt.Println(stackList.Pop())  // 7
+	//fmt.Println(stackList, "head and tail pointers are same again")
+	//fmt.Println(stackList.Pop()) // 5
+	//
+	//fmt.Println(stackList.Length) //0
 }

@@ -14,7 +14,7 @@ func LinearSearch(haystack []bool) {
 	}
 }
 
-func TwoCrystalBall(haystack []bool) int {
+func TwoCrystalBalls(haystack []bool) int {
 	jumpAmount := int(math.Floor(math.Sqrt(float64(len(haystack)))))
 
 	i := 0
