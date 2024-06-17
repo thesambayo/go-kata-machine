@@ -1,14 +1,19 @@
 package main
 
 import (
-	"go-kata-machine/scripts"
+	"go-kata-machine/helpers"
 	"log"
 	"os"
 	"strings"
 )
 
 func main() {
-	rootDir, err := scripts.GetRootDir()
+	// add options to use flags to declare with day directory to delete
+	// selectDay := flag.String("day", "", "a string")
+	// flag.Parse()
+	// fmt.Println(len(*selectDay), *selectDay)
+
+	rootDir, err := helpers.GetRootDir()
 	if err != nil {
 		log.Fatal(err)
 	}

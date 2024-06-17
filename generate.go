@@ -3,7 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
-	"go-kata-machine/scripts"
+	"go-kata-machine/helpers"
 	"log"
 	"os"
 	"path"
@@ -56,7 +56,7 @@ func getMostRecentlyCreatedDay(rootDir string) int {
 }
 
 func main() {
-	rootDir, err := scripts.GetRootDir()
+	rootDir, err := helpers.GetRootDir()
 
 	if err != nil {
 		log.Fatal(err)
@@ -74,7 +74,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	for dsa, dsaConfig := range scripts.GetDsaDetails() {
+	for dsa, dsaConfig := range helpers.GetDsaDetails() {
 		// create algo kata directory e.g .day1/Stack/, .day1/Queue/
 		dsaDirPath := path.Join(dayDirPath, strings.ToLower(dsa))
 		err = os.Mkdir(dsaDirPath, DirectoryPermission)
@@ -101,7 +101,7 @@ func main() {
 	}
 }
 
-func createFunction(dsa, dsaDirPath string, dsaConfig scripts.DSADetails) error {
+func createFunction(dsa, dsaDirPath string, dsaConfig helpers.DSADetails) error {
 	text := `package %s
 func %s(%s) %s {}
 `
@@ -114,7 +114,7 @@ func %s(%s) %s {}
 	return nil
 }
 
-func createStruct(dsa, dsaDirPath string, dsaConfig scripts.DSADetails) error {
+func createStruct(dsa, dsaDirPath string, dsaConfig helpers.DSADetails) error {
 	structDefinition := `type Node[T any] struct {
 	value T
 	// pointer-value of nextNode, zerothValue is nil

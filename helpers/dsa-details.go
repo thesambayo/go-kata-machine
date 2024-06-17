@@ -1,4 +1,4 @@
-package scripts
+package helpers
 
 type DsaMethod struct {
 	Name        string
