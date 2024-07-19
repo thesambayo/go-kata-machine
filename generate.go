@@ -12,8 +12,10 @@ import (
 	"strings"
 )
 
-const DirectoryPermission = 0750
-const FilePermission = 0666
+const (
+	DirectoryPermission = 0750
+	FilePermission      = 0666
+)
 
 func getDayNumberValue(day string) (int, error) {
 	dayNumberString := day[3:]
