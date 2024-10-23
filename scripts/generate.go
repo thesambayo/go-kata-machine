@@ -1,4 +1,4 @@
-package main
+package scripts
 
 import (
 	"errors"
@@ -26,7 +26,12 @@ func getDayNumberValue(day string) (int, error) {
 	return dayNumberInt, nil
 }
 
-func getMostRecentlyCreatedDay(rootDir string) int {
+func GetMostRecentlyCreatedDay() int {
+	rootDir, err := helpers.GetRootDir()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	files, err := os.ReadDir(rootDir)
 	if err != nil {
 		log.Fatal(err)
@@ -57,14 +62,14 @@ func getMostRecentlyCreatedDay(rootDir string) int {
 	return recentDay
 }
 
-func main() {
+func GenerateNewDayDirectory() {
 	rootDir, err := helpers.GetRootDir()
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	recentlyCreatedDay := getMostRecentlyCreatedDay(rootDir)
+	recentlyCreatedDay := GetMostRecentlyCreatedDay()
 
 	dayName := "day" + strconv.Itoa(recentlyCreatedDay+1)
 	dayDirPath := path.Join(rootDir, dayName)

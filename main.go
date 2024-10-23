@@ -1,6 +1,41 @@
 package main
 
+import (
+	"flag"
+	"fmt"
+	"go-kata-machine/scripts"
+)
+
+type Config struct {
+	clear    bool
+	generate bool
+	day      bool
+}
+
 func main() {
+	var config Config
+
+	flag.BoolVar(&config.clear, "clear", false, "clear all day directories")
+	flag.BoolVar(&config.generate, "generate", false, "generate new working day directory")
+	flag.BoolVar(&config.day, "day", false, "get most recently created day directory")
+	flag.Parse()
+
+	// fmt.Println(config)
+	if config.clear {
+		scripts.ClearAllDayDirectories()
+		return
+	}
+
+	if config.generate {
+		scripts.GenerateNewDayDirectory()
+		return
+	}
+
+	if config.day {
+		fmt.Println(scripts.GetMostRecentlyCreatedDay())
+		return
+	}
+
 	//foo := []int{1, 3, 4, 69, 71, 81, 90, 99, 420, 1337, 69420}
 	//fmt.Println(binarysearch.BinarySearch(foo, 99))
 	////

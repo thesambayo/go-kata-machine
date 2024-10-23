@@ -1,4 +1,4 @@
-package main
+package scripts
 
 import (
 	"go-kata-machine/helpers"
@@ -7,7 +7,8 @@ import (
 	"strings"
 )
 
-func main() {
+func ClearAllDayDirectories() {
+	// add to main.go
 	// add options to use flags to declare with day directory to delete
 	// selectDay := flag.String("day", "", "a string")
 	// flag.Parse()

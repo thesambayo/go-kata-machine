@@ -7,10 +7,6 @@ import (
 	"runtime"
 )
 
-type Algo struct {
-	name string
-}
-
 // func GetDSA() []string {
 // 	return []string{
 // 		"LinearSearchList",
