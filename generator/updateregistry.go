@@ -61,10 +61,11 @@ func (*Generator) updateRegistry(content string, newDay int) string {
 
 		// Handle comma separation
 		// If there are existing entries (ignoring whitespace), add a comma
-		trimmedEntries := strings.TrimSpace(existingEntries)
-		if trimmedEntries != "" {
-			registryEntry += ","
-		}
+		// trimmedEntries := strings.TrimSpace(existingEntries)
+		// if trimmedEntries != "" {
+		// 	registryEntry += ","
+		// }
+		registryEntry += ","
 
 		result := declaration + "\n" + registryEntry + existingEntries + "\n}"
 
