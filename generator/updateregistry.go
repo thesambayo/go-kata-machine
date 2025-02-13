@@ -6,6 +6,18 @@ import (
 	"strings"
 )
 
+func formatRegistryEntry(day int) string {
+	// The `[1]` in `%[1]d` tells fmt.Sprintf
+	// to reuse the first argument (day) for all occurrences.
+	format := `"day%[1]d": {
+		binarySearch: day%[1]d.BinarySearchList,
+		bubbleSort:   day%[1]d.BubbleSort,
+		linearSearch: day%[1]d.LinearSearch,
+		twoCrystalBalls: day%[1]d.TwoCrystalBalls,
+	}`
+	return fmt.Sprintf(format, day)
+}
+
 // updateRegistryImports adds new import statement to the imports block
 func (*Generator) updateRegistryImports(content string, newDay int) string {
 	newImport := fmt.Sprintf("\t\"go-kata-machine/day%d\"", newDay)
@@ -19,11 +31,7 @@ func (*Generator) updateRegistryImports(content string, newDay int) string {
 // updateRegistry adds new day to the content of the registry map
 func (*Generator) updateRegistry(content string, newDay int) string {
 	// Create the new registry entry with proper formatting
-	// %d is replaced with newDay value
-	registryEntry := fmt.Sprintf(`	"day%d": {
-		binarySearch: day%d.BinarySearchList,
-		bubbleSort:   day%d.BubbleSort,
-	}`, newDay, newDay, newDay)
+	registryEntry := formatRegistryEntry(newDay)
 
 	// Regular expression breakdown:
 	// (var Registry = map\[string\]Day\{) 	- Group 1: Captures the map declaration
@@ -103,12 +111,4 @@ func (*Generator) validateRegistryFormat(content string) bool {
 	}
 
 	return true
-}
-
-// Optional: Add helper method to format the registry entry
-func (*Generator) formatRegistryEntry(day int) string {
-	return fmt.Sprintf(`	"day%d": {
-		binarySearch: day%d.BinarySearchList,
-		bubbleSort:   day%d.BubbleSort,
-	}`, day, day, day)
 }

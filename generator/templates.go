@@ -16,4 +16,16 @@ func BubbleSort(arr []int) []int {
     return arr
 }
 `,
+	"linearsearch.go": `package day%d
+
+func LinearSearch(haystack []int, needle int) bool {
+	return false
+}
+`,
+	"twocrystallballs.go": `package day%d
+
+func TwoCrystalBalls(haystack []bool) int {
+	return -1
+}
+`,
 }

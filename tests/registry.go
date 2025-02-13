@@ -5,7 +5,6 @@ import (
 	"go-kata-machine/day4"
 	"go-kata-machine/day5"
 	"go-kata-machine/day6"
-	"go-kata-machine/day7"
 )
 
 // var day string
@@ -25,17 +24,17 @@ type Day struct {
 
 // Registry maps day identifiers to their corresponding implementations.
 var Registry = map[string]Day{
-	"day7": {
-		binarySearch: day7.BinarySearchList,
-		bubbleSort:   day7.BubbleSort,
-	},
 	"day6": {
-		binarySearch: day6.BinarySearchList,
-		bubbleSort:   day6.BubbleSort,
+		binarySearch:    day6.BinarySearchList,
+		bubbleSort:      day6.BubbleSort,
+		linearSearch:    day6.LinearSearch,
+		twoCrystalBalls: day6.TwoCrystalBalls,
 	},
 	"day5": {
-		binarySearch: day5.BinarySearchList,
-		bubbleSort:   day5.BubbleSort,
+		binarySearch:    day5.BinarySearchList,
+		bubbleSort:      day5.BubbleSort,
+		linearSearch:    day5.LinearSearch,
+		twoCrystalBalls: day5.TwoCrystalBalls,
 	},
 	"day4": {
 		binarySearch:    day4.BinarySearchList,
