@@ -54,10 +54,9 @@ go test ./tests -v -day=day4 -run ^TestBubbleSort$
 ## Project Structure
 ```
 go-kata-machine/
-├── helpers/         # Helper functions and DSA details
 ├── dayN/           # Generated kata directories
-│   ├── algorithm1/
-│   ├── algorithm2/
+│   ├── algorithm1
+│   ├── algorithm2
 │   └── ...
 ├── tests/          # Test suites
 └── README.md
@@ -79,7 +78,6 @@ Feel free to contribute by:
 
 ## Acknowledgments
 - Frontend Masters for the original JavaScript algorithms course
-- [Add any other acknowledgments]
 
 ## Note
 This project is under active development. New algorithms and features are being added regularly.

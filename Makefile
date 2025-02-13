@@ -37,3 +37,8 @@ clear:
 .PHONY: lastDay
 lastDay:
 	go run . -lastDay
+
+## test day=$1: get last created day
+.PHONY: test
+test:
+	go test ./tests -v -day ${day}

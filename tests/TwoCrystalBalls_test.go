@@ -1,4 +1,4 @@
-package twocrystalballs
+package tests
 
 import (
 	"math/rand"
@@ -10,6 +10,12 @@ func GenerateRandomNumber(minBound, maxBound int) int {
 }
 
 func TestTwoCrystalBalls(t *testing.T) {
+	twoCrystallBalls, err := GetTwoCrystalBallFunc(*day)
+	if err != nil {
+		t.Skipf("Cannot find  two crystal balls funcion for %v", *day)
+		// return
+	}
+
 	t.Run("two crystal balls where there is a break", func(t *testing.T) {
 		numOfFlights := 10000
 		idx := GenerateRandomNumber(1, numOfFlights)
@@ -18,7 +24,7 @@ func TestTwoCrystalBalls(t *testing.T) {
 			testData[i] = true
 		}
 
-		got := TwoCrystalBalls(testData)
+		got := twoCrystallBalls(testData)
 		expected := idx
 		assertError(t, got, expected)
 	})
@@ -26,15 +32,8 @@ func TestTwoCrystalBalls(t *testing.T) {
 	t.Run("two crystal balls where there is no break", func(t *testing.T) {
 		numOfFlights := 1000
 		testData := make([]bool, numOfFlights)
-		got := TwoCrystalBalls(testData)
+		got := twoCrystallBalls(testData)
 		expected := -1
 		assertError(t, got, expected)
 	})
-}
-
-func assertError(t testing.TB, got int, expected int) {
-	t.Helper()
-	if got != expected {
-		t.Errorf("got %d, want %d", got, expected)
-	}
 }

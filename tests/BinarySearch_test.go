@@ -23,10 +23,3 @@ func TestBinarySearchList(t *testing.T) {
 		assertError(t, binarySearch(arr, 0), false)
 	})
 }
-
-func assertError(t testing.TB, got bool, expected bool) {
-	t.Helper()
-	if got != expected {
-		t.Errorf("got %v, want %v", got, expected)
-	}
-}
