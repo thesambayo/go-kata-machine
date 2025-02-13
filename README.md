@@ -1,79 +1,85 @@
-# Golang's DSA version of [Frontend masters JavaScript algorithms course](https://frontendmasters.com/courses/algorithms)
+# Go Kata Machine
 
-## WARNING
-I have just started to add algorithms, as I have not completed the course.
+A Golang implementation of Data Structures and Algorithms from the [Frontend Masters JavaScript Algorithms Course](https://frontendmasters.com/courses/algorithms).
 
-## How to get started
-Clone the repo, of course, you should have golang installed on your computer.
+## Overview
+This project provides a structured way to practice implementing various data structures and algorithms in Go. It automatically generates daily kata exercises and includes test suites to verify your implementations.
 
-Create a day of katas, this will use the files in `helpers/*`.
-You can check the `helpers/dsa-details.go` file to see list of ready algorithms that will have its respective bare files and tests generated.
+## Prerequisites
+- Go
+- Git
 
-```go
+## Installation
+No extra library to install, as long as you've got Golang and a terminal/IDE, you are good to go.
+```
+
+## Usage
+
+### Generating Kata Exercises
+Generate a new day of kata exercises:
+```bash
 go run . -generate
-// or
-go run . -generate=true
 ```
+This will create a new directory (e.g., `day1`, `day2`, etc.) with skeleton implementations and test files.
 
-This will progressively create folders named
-```shell
-day1/*
-day2/*
-day3/*
-day4/*
-```
-
-## To clear all generated days of katas, run:
-```go
+### Clearing Generated Katas
+To remove all generated kata directories:
+```bash
 go run . -clear
-// or
-go run . -clear=true
 ```
 
-## To see most recent generated day run:
-```go
-go run . -day
-// or
-go run . -day=true
+### Checking Latest Generated Day
+To see the most recently generated kata day:
+```bash
+go run . -lastDay
 ```
 
-## How to test
-### You run go test `path to day/package` like so to test a single test:
-```shell
-go test ./day1/bubblesort
+## Testing Your Implementations
+
+
+### Verbose Testing
+For detailed test output:
+```bash
+go test ./tests -v -day=dayN
 ```
 
-
-### Or run all tests for a day workspace:
-```shell
-# open terminal
-cd day* # into desired day workspace
-
-# then run
-go test ./...
+### Testing Specific Algorithm
+To test a specific algorithm with verbose output:
+```bash
+go test ./tests -v -day=dayN -run ^TestAlgorithmName$
+# Example:
+go test ./tests -v -day=day4 -run ^TestBubbleSort$
 ```
 
+## Project Structure
+```
+go-kata-machine/
+├── helpers/         # Helper functions and DSA details
+├── dayN/           # Generated kata directories
+│   ├── algorithm1/
+│   ├── algorithm2/
+│   └── ...
+├── tests/          # Test suites
+└── README.md
+```
 
-<!-- TO DO -->
-## Create a make file to make running the program even easier
-with the following commands:
-- `make generate` or `go run . -generate`
-<!-- -generate a boolean flag -->
-- `make delete -day day1` or `go run . -clear -day day3`
-<!--
-  -clear a boolean flag,
-  -day an optional flag to clear only a given day,
-  if -day is absent, all days will be cleared
-  if present, either dayX is present or not,
-    program will try to clear only that day
--->
-- `make tests -day=dayX -v -file` or `go test ./tests -v -day=dayX`
-<!--
-  -day dayX, a flag for day to run tests against,
-  otherwise day1 is tested against.
-  -v a optional boolean flag for verbose
--->
-- To test against only one file:
- You will run `make tests -day=dayX -v -file Test{Name of File in day}` or
- ` go test ./tests -v -day day4 -run ^{File}$`
- eg: `go test ./tests -v -day day4 -run ^TestBubbleSort$`
+## Upcoming Features
+- Makefile implementation with the following commands:
+  - `make generate` - Generate new kata day
+  - `make delete -day dayN` - Delete specific day
+  - `make tests -day=dayN -v -file` - Run tests with options
+  - `make tests -day=dayN -v -file TestAlgorithm` - Test specific algorithm
+
+## Contributing
+Feel free to contribute by:
+1. Forking the repository
+2. Creating a feature branch
+3. Committing your changes
+4. Creating a pull request
+
+## Acknowledgments
+- Frontend Masters for the original JavaScript algorithms course
+- [Add any other acknowledgments]
+
+## Note
+This project is under active development. New algorithms and features are being added regularly.
